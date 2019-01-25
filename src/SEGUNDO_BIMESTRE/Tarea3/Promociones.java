@@ -16,7 +16,8 @@ public class Promociones {
     public static void main(String[] args) {
         double chat1, suple1, foro1, eva1, tarea1, pre1, chat2, suple2,
                 foro2, eva2, tarea2, pre2, Total, acumulado1 = 0, exaFin1 = 0, totFin1 = 0, acumulado2 = 0, recu = 0, Fin = 0, sum1, sum2,
-                numExa = 0, numTare = 0, numApr = 0, numRep = 0, numProm = 0, numMax = 0, numMin = 0, prom = 0;
+                numExa = 0, numTare = 0, numApr = 0, numRep = 0, numProm = 0, numMax = 0, numMin = 0, prom = 0,
+                por1 = 0, por2 = 0, por3 = 0, por4 = 0;
         //DECLARACION DE VARIABLES TIPO DOUBLE 
         String alerta = "", estado = "", estudiante = "", alerta2 = "";
         //DECLARACION DE VARIABLES TIPO STRING
@@ -101,17 +102,21 @@ public class Promociones {
 
                 if (pre1 == 0 || pre2 == 0 || exaFin1 == 0 || recu == 0) {//SI NO DA ALGUNA DE LAS 4 PRUEBAS SE LE SUMA UNO AL CONTADOR
                     numExa += 1;//SIRVE PARA CONTABILIZAR CUANTAS PRUEBAS NO REALIZO
+                    por1 = (100*numExa)/lim;
                 }
 
                 if (tarea1 == 0 || tarea2 == 0) {//SI NO CUMPLE ALGUNA DE LAS DOS TAREAS SE SUMA UNO AL CONTADOR 
                     numTare += 1;//SIRVE PARA CONTABILIZAR CUANTAS TAREAS NO REALIZO ALGUNA DE SUS TAREAS
+                    por1 = (100*numTare)/lim;
                 }
 
                 if (estado == "APROBADO") {//SI SU ESTADO ES APROBADO ENTONCES SE SUMA UNO AL CONTADOR 
                     numApr += 1;//SIRVE PARA CONTABILIZAR CUANTOS ALUMNOS APROBARON
+                    por1 = (100*numApr)/lim;
                 }
                 if (estado == "REPROBADO") {//SI SU ESTADO ES REPROBADO ENTONCES SE SUMA UNO AL CONTADOR 
                     numRep += 1;//SIRVE PARA CONRABILIZAR CUANTOS ALUMNOS REPORBARON
+                    por1 = (100*numRep)/lim;
                 }
                 if (Total >= 35) {//SIRVE PARA ENCONTRAR A LOS ALUMNOS QUE SE ACERCARON A 40 PUNTOS 
                     numMax += 1;//SIRVE PARA CONTABILIZAR CUANTOS ALUMNOS SE ACERCARON A 40 PUNTOS
@@ -131,10 +136,10 @@ public class Promociones {
                 //ENVIAMOS LAS VARIABLES 
                 File_Prom.format("\r\n");
             }
-            File_Prom.format("\r\n%.2f;%s;", numExa, "ESTUDIANTE(S) NO SE PRESENTARON A SUS EXAMENES");
-            File_Prom.format("\r\n%.2f;%s;", numTare, "ESTUDIANTE(S) NO PRESENTARON SUS TAREAS");
-            File_Prom.format("\r\n%.2f;%s;", numApr, "ESTUDIANTE(S) APROBADO(S)");
-            File_Prom.format("\r\n%.2f;%s;", numRep, "ESTUDIANTE(S) REPROBADO(S)");
+            File_Prom.format("\r\n%.2f;%s;", por1, "% ESTUDIANTE(S) NO SE PRESENTARON A SUS EXAMENES");
+            File_Prom.format("\r\n%.2f;%s;", por2, "% ESTUDIANTE(S) NO PRESENTARON SUS TAREAS");
+            File_Prom.format("\r\n%.2f;%s;", por3, "% ESTUDIANTE(S) APROBADO(S)");
+            File_Prom.format("\r\n%.2f;%s;", por4, "% ESTUDIANTE(S) REPROBADO(S)");
             File_Prom.format("\r\n%.2f;%s;", numMax, "ESTUDIANTE(S) SE ACERCAN A 40 PUNTOS");
             File_Prom.format("\r\n%.2f;%s;", numMin, "ESTUDIANTE(S) ESTAN BAJOS EN NOTAS");
             File_Prom.format("\r\n%s;%.2f;%s;%.2f;%s;", "PROMEDIO: ", prom, "----------", numProm, "ESTUDIANTE(S) ESTAN POR ENCIMA DEL PROMEDIO");
